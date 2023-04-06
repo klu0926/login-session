@@ -18,5 +18,5 @@ app.use(Router)
 
 // server start
 app.listen(PORT, () => {
-  console.log('server is live')
+  console.log(`server is live on http://localhost:${PORT}`)
 })
