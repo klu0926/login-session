@@ -1,6 +1,7 @@
 const express = require('express')
 const handlebars = require('express-handlebars')
 const Router = require('./router')
+require('./config/connectDB')
 
 
 const app = express()
@@ -11,6 +12,7 @@ app.engine('handlebars', handlebars({
   defaultLayout: "main"
 }))
 app.set('view engine', 'handlebars')
+
 
 // middleware
 app.use(express.urlencoded({ extended: true }))
