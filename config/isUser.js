@@ -1,9 +1,6 @@
-const { model } = require('mongoose')
 const userModel = require('../models/userModel')
 
-
-function isUser(email, password) {
-
+function isUser (email, password) {
   return userModel.findOne({ email, password })
     .lean()
     .then(user => {
@@ -16,5 +13,3 @@ function isUser(email, password) {
 }
 
 module.exports = isUser
-
-

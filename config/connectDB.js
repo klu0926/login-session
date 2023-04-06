@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 
 // use dotenv
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== 'production') {
   console.log('use dotenv')
   require('dotenv').config()
 }
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: true
 })
 const db = mongoose.connection
 

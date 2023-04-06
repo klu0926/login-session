@@ -3,16 +3,14 @@ const handlebars = require('express-handlebars')
 const Router = require('./router')
 require('./config/connectDB')
 
-
 const app = express()
 const PORT = process.env.PORT || 3000
 
 // view engine
 app.engine('handlebars', handlebars({
-  defaultLayout: "main"
+  defaultLayout: 'main'
 }))
 app.set('view engine', 'handlebars')
-
 
 // middleware
 app.use(express.urlencoded({ extended: true }))
@@ -22,5 +20,3 @@ app.use(Router)
 app.listen(PORT, () => {
   console.log('server is live')
 })
-
-

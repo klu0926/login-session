@@ -3,7 +3,6 @@ const isUser = require('../config/isUser')
 const isLogin = require('../config/isLogin')
 const sessionConfig = require('../config/session')
 
-
 Router.use(sessionConfig)
 
 // root GET
@@ -14,7 +13,7 @@ Router.get('/', (req, res) => {
 // 登入GET
 Router.get('/login', isLogin, (req, res) => {
   if (res.locals.isLogin === true) {
-    return redirect('/user')
+    return res.redirect('/user')
   }
   res.render('login')
 })
@@ -28,9 +27,9 @@ Router.post('/login', async (req, res) => {
   req.session.isLogin = false
 
   // 沒有輸入帳密
-  if (email.trim() === "" || password.trim() === "") {
+  if (email.trim() === '' || password.trim() === '') {
     console.log('no input')
-    res.locals.message = "Please enter email and password."
+    res.locals.message = 'Please enter email and password.'
     return res.redirect('/login')
   }
 
@@ -67,12 +66,10 @@ Router.get('/user', isLogin, (req, res) => {
   res.render('user')
 })
 
-
 Router.post('/logout', (req, res) => {
   req.session.destroy()
   res.clearCookie('connect.sid')
   res.redirect('/login')
 })
-
 
 module.exports = Router
