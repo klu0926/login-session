@@ -47,6 +47,7 @@ Router.post('/login', async (req, res) => {
     req.session.firstName = user.firstName
     req.session.email = user.email
     req.session.save(() => {
+      // 卻保存好後再繼續
       console.log('done saving session')
       return res.redirect('/user')
     })
@@ -59,7 +60,7 @@ Router.post('/login', async (req, res) => {
   }
 })
 
-Router.get('/user', (req, res) => {
+Router.get('/user', isLogin, (req, res) => {
   res.locals.firstName = req.session.firstName
   res.locals.email = req.session.email
   console.log(res.locals)
@@ -70,10 +71,8 @@ Router.get('/user', (req, res) => {
 Router.post('/logout', (req, res) => {
   req.session.destroy()
   res.clearCookie('connect.sid')
-
   res.redirect('/login')
 })
-
 
 
 module.exports = Router
