@@ -2,8 +2,8 @@
 
 
 ## About - 介紹
-帳號密碼驗證機制練習：使用express, mongoDB, mongoose, handlebars
-保存使用者登入狀態練習：使用express-session,connect-mongo
+帳號密碼驗證機制練習：使用express, mongoDB, mongoose, handlebars  
+保存使用者登入狀態練習：使用express-session,connect-mongo  
 
 ## Features - 功能
 
