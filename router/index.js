@@ -38,9 +38,6 @@ Router.post('/login', async (req, res) => {
 
   // 找到使用者
   if (user) {
-    console.log('user found')
-    console.log(user)
-
     // 帳密驗證通過 就配發一個sessionId (轉到一個/session頁面來配置)
     req.session.isLogin = true
     req.session.firstName = user.firstName
@@ -53,7 +50,6 @@ Router.post('/login', async (req, res) => {
 
     // 找不到使用者
   } else {
-    console.log("can't find user")
     res.locals.message = "Can't find your user account."
     return res.render('login')
   }
@@ -62,7 +58,6 @@ Router.post('/login', async (req, res) => {
 Router.get('/user', isLogin, (req, res) => {
   res.locals.firstName = req.session.firstName
   res.locals.email = req.session.email
-  console.log(res.locals)
   res.render('user')
 })
 
